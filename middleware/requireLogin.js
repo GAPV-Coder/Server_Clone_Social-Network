@@ -16,9 +16,6 @@ module.exports = (req, res, next) => {
 		}
 		const { _id } = payload;
 		User.findById(_id).then((userData) => {
-			if (!userData) {
-				return res.status(404).json({ error: "User not found" });
-			}
 			req.user = userData;
 			next();
 		});
